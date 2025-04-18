@@ -11,11 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     '@vueuse/nuxt',
   ],
-  $production: {
-    nitro: {
-      preset: 'cloudflare-worker',
-    },
-  },
   devtools: { enabled: true },
   app: {
     head: {
