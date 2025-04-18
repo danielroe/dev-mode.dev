@@ -17,10 +17,14 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
     },
   },
+  routeRules: {
+    '/': { prerender: true },
+  },
   future: {
     compatibilityVersion: 4,
   },
   experimental: {
+    noVueServer: true,
     typedPages: true,
   },
   compatibilityDate: '2024-04-03',
