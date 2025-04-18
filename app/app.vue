@@ -64,12 +64,13 @@ onPrehydrate(() => {
         <button
           class="toggle"
           :class="{ 'toggle-on': devMode }"
+          type="button"
           role="switch"
           :aria-checked="devMode"
           aria-label="Toggle developer mode"
           @click="devMode = !devMode"
         >
-          <div class="toggle-handle" />
+          <span class="toggle-handle" />
         </button>
         <p
           class="toggle-status"
