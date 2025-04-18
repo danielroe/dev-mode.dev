@@ -6,6 +6,6 @@ test('home page', async ({ page }) => {
 })
 
 test('og image for home page', async ({ page }) => {
-  await page.goto('/__og-image__/image/og.png')
+  await page.goto('/__og-image__/static/og.png')
   await expect(page).toHaveScreenshot()
 })
