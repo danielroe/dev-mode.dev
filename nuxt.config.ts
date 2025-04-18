@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'nuxt-time',
     '@nuxt/test-utils/module',
+    '@vueuse/nuxt',
   ],
   devtools: { enabled: true },
   app: {
