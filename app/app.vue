@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSound } from '@vueuse/sound'
+import flashlightSound from '~/assets/flashlight.mp3'
+
 const devMode = useLocalStorage('dev-mode', () => false)
 
 defineOgImage({ component: 'Default' })
@@ -46,67 +49,129 @@ onPrehydrate(() => {
     }
   }
 })
+
+const darkMode = useCookie('dark-mode', {
+  default: () => false,
+})
+
+const { x, y } = useMouse({
+  type: 'client',
+})
+
+const { play: playFlashlightSound } = useSound(flashlightSound)
+
+watch(darkMode, () => {
+  playFlashlightSound()
+})
 </script>
 
 <template>
-  <div class="app-container">
-    <main>
-      <h1 class="title">
-        dev mode
-      </h1>
-      <p class="subtitle">
-        easily turn dev mode on and off
-      </p>
+  <div
+    class="root"
+    :class="{
+      dark: darkMode,
+    }"
+  >
+    <div class="app-container">
+      <main>
+        <h1 class="title">
+          dev mode
+        </h1>
+        <p class="subtitle">
+          easily turn dev mode on and off
+        </p>
+
+        <div
+          class="toggle-container"
+        >
+          <button
+            class="toggle"
+            :class="{ 'toggle-on': devMode }"
+            type="button"
+            role="switch"
+            :aria-checked="devMode"
+            aria-label="Toggle developer mode"
+            @click="devMode = !devMode"
+          >
+            <span class="toggle-handle" />
+          </button>
+          <p
+            class="toggle-status"
+            aria-hidden="true"
+          >
+            {{ devMode ? 'ON' : 'OFF' }}
+          </p>
+        </div>
+
+        <p
+          class="status-message"
+          aria-live="polite"
+        >
+          developer mode is currently <span :class="devMode ? 'on' : 'off'">{{ devMode ? 'ON' : 'OFF' }}</span>
+        </p>
+      </main>
 
       <div
-        class="toggle-container"
+        class="toggle-dark-mode"
+        title="Toggle dark mode"
+        @click="darkMode = !darkMode"
       >
-        <button
-          class="toggle"
-          :class="{ 'toggle-on': devMode }"
-          type="button"
-          role="switch"
-          :aria-checked="devMode"
-          aria-label="Toggle developer mode"
-          @click="devMode = !devMode"
-        >
-          <span class="toggle-handle" />
-        </button>
-        <p
-          class="toggle-status"
-          aria-hidden="true"
-        >
-          {{ devMode ? 'ON' : 'OFF' }}
-        </p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+        ><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9"
+        /></svg>
       </div>
 
-      <p
-        class="status-message"
-        aria-live="polite"
-      >
-        developer mode is currently <span :class="devMode ? 'on' : 'off'">{{ devMode ? 'ON' : 'OFF' }}</span>
-      </p>
-    </main>
+      <footer>
+        <a
+          class="hover:underline"
+          href="https://github.com/danielroe/dev-mode.dev"
+          aria-label="View source code on GitHub"
+        >source</a>
+        &middot;
+        made with ❤️ by <a
+          class="font-semibold hover:underline"
+          href="https://bsky.app/profile/danielroe.dev"
+          aria-label="Daniel Roe on Bluesky"
+        >
+          @danielroe.dev
+        </a>
+      </footer>
+    </div>
 
-    <footer>
-      <a
-        class="hover:underline"
-        href="https://github.com/danielroe/dev-mode.dev"
-        aria-label="View source code on GitHub"
-      >source</a>
-      &middot;
-      made with ❤️ by <a
-        class="font-semibold hover:underline"
-        href="https://bsky.app/profile/danielroe.dev"
-        aria-label="Daniel Roe on Bluesky"
+    <div
+      v-if="darkMode"
+      class="dark-light"
+    >
+      <div
+        class="flashlight"
+        :style="{
+          transform: `translate(${x}px, ${y}px)`,
+        }"
       >
-        @danielroe.dev
-      </a>
-    </footer>
+        <img
+          src="~/assets/flashlight.png"
+          alt="Flashlight"
+        >
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+a {
+  cursor: pointer;
+}
+
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -208,6 +273,57 @@ main {
 .off {
   color: #555;
   font-weight: bold;
+}
+
+.toggle-dark-mode {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #fff;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2759cf;
+    color: #fff;
+  }
+
+  visibility: hidden;
+
+  @media (hover: hover) {
+    & {
+      visibility: visible;
+    }
+  }
+}
+
+.dark {
+  cursor: none;
+}
+
+.dark-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.flashlight {
+  position: fixed;
+
+  & img {
+    transform: translate(-50%, -50%);
+  }
 }
 
 footer {
