@@ -50,9 +50,7 @@ onPrehydrate(() => {
   }
 })
 
-const darkMode = useCookie('dark-mode', {
-  default: () => false,
-})
+const darkMode = ref(false)
 
 const { x, y } = useMouse({
   type: 'client',
