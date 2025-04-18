@@ -212,7 +212,7 @@ main {
 
 footer {
   margin-top: 2rem;
-  color: #888;
+  color: #767676;
   font-size: 0.9rem;
   text-align: center;
 }
