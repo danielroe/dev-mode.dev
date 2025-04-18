@@ -42,4 +42,7 @@ export default defineNuxtConfig({
   htmlValidator: {
     failOnError: true,
   },
+  ogImage: {
+    zeroRuntime: true,
+  },
 })
