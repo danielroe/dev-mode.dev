@@ -19,7 +19,7 @@
     "test:unit": "vitest",
     "test:nuxt": "vitest -c vitest.nuxt.config.ts",
     "test:browser": "playwright test test/browser",
-    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.51.1-noble bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
+    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -v /tmp/playwright-node-modules:/work/node_modules -w /work/ -it mcr.microsoft.com/playwright:v1.51.1-noble bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.3.0",
