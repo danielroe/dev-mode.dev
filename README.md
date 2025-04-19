@@ -1,75 +1,57 @@
-# Nuxt 3 Minimal Starter
+# dev-mode.dev ™©®
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<p align="center">
+  <i>A site to toggle your developer mode on and off with ONE CLICK!</i>
+</p>
+
+<p align="center">
+  <a href="https://dev-mode.dev" target="_blank">
+    <img width="600" alt="Screenshot of dev-mode.dev" src="https://github.com/user-attachments/assets/4c9bf279-a5d2-49a7-a9a1-172c74782ddf">
+  </a>
+</p>
+
+<p align="center">
+  <strong><a href="https://dev-mode.dev">👉 Visit dev-mode.dev</a></strong>
+</p>
+
+## Features
+
+- ⚡️ blazing fast
+- 📦 built from scratch for devs
+- 🎛️ offering full control of your environment
+- 💰 VC funding welcome
+
+## How It Works
+
+1. click the toggle to turn dev mode ON or OFF
+2. ...
+3. enjoy the magic of dev mode!
+
+## The Technical Bits
+
+- Built with [Nuxt](https://nuxt.com)
+- Uses local storage (with a [Vueuse composable](https://github.com/vueuse/vueuse/)) to remember your dev mode preference
+- Changes favicons based on your mode selection using [unhead](https://github.com/unjs/unhead)
 
 ## Setup
 
-Make sure to install the dependencies:
-
 ```bash
-# npm
-npm install
-
-# pnpm
+# install dependencies
+corepack enable
 pnpm install
 
-# yarn
-yarn install
+# Start the _dev_ server
+pnpm dev
 
-# bun
-bun install
+# Build for production
+pnpm build
+
+# Preview the production build
+pnpm preview
 ```
 
-## Development Server
+## License
 
-Start the development server on `http://localhost:3000`:
+Made with ❤️
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Published under the [MIT License](./LICENSE).
