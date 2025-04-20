@@ -22,6 +22,9 @@ useHead({
       { rel: 'apple-touch-icon', sizes: '180x180', href: prefix + '/apple-touch-icon.png' },
     ]
   },
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' }
+  ]
 })
 
 onPrehydrate(() => {
@@ -225,6 +228,7 @@ main {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .toggle:focus-visible {
