@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSound } from '@vueuse/sound'
 import flashlightSound from '~/assets/flashlight.mp3'
+import { useToast } from 'vue-toastification'
 
 const devMode = useLocalStorage('dev-mode', () => false)
 
@@ -63,6 +64,35 @@ const { play: playFlashlightSound } = useSound(flashlightSound)
 
 watch(darkMode, () => {
   playFlashlightSound()
+})
+
+const toast = useToast()
+
+watch(devMode, (newValue) => {
+  if (newValue) {
+    setTimeout(() => {
+      devMode.value = false
+      toast.info('Dev mode has been turned off automatically for better work-life balance.', {
+        position: 'top-right',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: false,
+        closeButton: 'button',
+        icon: true,
+        rtl: false,
+        style: {
+          background: '#333',
+          color: '#fff',
+          borderRadius: '8px',
+          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+        },
+      })
+    }, 5000)
+  }
 })
 </script>
 
