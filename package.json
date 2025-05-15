@@ -36,7 +36,7 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@nuxt/test-utils": "3.18.0",
+    "@nuxt/test-utils": "3.19.0",
     "@playwright/test": "1.52.0",
     "@vue/test-utils": "2.4.6",
     "eslint": "9.26.0",
