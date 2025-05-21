@@ -67,10 +67,7 @@ watch(darkMode, () => {
 })
 
 watch(devMode, (newValue) => {
-  toast.info(`Dev mode has been turned ${newValue ? 'on for improved productivity' : 'off for better work life balance'}.`, {
-    duration: 5000,
-    className: 'custom-toast',
-  })
+  toast.info(`Dev mode has been turned ${newValue ? 'on for improved productivity' : 'off for better work life balance'}.`)
 })
 </script>
 
@@ -343,13 +340,5 @@ footer {
   color: #767676;
   font-size: 0.9rem;
   text-align: center;
-}
-
-/* Custom styling for sonner toasts */
-:global(.custom-toast) {
-  background: #333;
-  color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 </style>
