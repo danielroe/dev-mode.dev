@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useSound } from '@vueuse/sound'
-import { toast } from 'vue-sonner'
-import { Toaster } from 'vue-sonner'
+import { toast, Toaster } from 'vue-sonner'
 import flashlightSound from '~/assets/flashlight.mp3'
 
 const devMode = useLocalStorage('dev-mode', () => false)
@@ -174,7 +173,7 @@ watch(devMode, (newValue) => {
         >
       </div>
     </div>
-    
+
     <Toaster position="top-left" />
   </div>
 </template>
