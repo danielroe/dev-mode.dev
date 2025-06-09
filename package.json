@@ -41,11 +41,11 @@
     "@playwright/test": "1.52.0",
     "@vue/test-utils": "2.4.6",
     "eslint": "9.28.0",
-    "happy-dom": "17.6.1",
+    "happy-dom": "17.6.3",
     "lint-staged": "16.1.0",
     "simple-git-hooks": "2.13.0",
     "typescript": "5.8.3",
-    "vitest": "3.2.0",
+    "vitest": "3.2.2",
     "vue-tsc": "2.2.10"
   },
   "simple-git-hooks": {
