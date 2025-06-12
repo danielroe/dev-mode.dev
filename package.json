@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@nuxt/test-utils": "3.19.1",
-    "@playwright/test": "1.52.0",
+    "@playwright/test": "1.53.0",
     "@vue/test-utils": "2.4.6",
     "eslint": "9.28.0",
     "happy-dom": "17.6.3",
@@ -56,5 +56,5 @@
       "npx eslint --fix"
     ]
   },
-  "packageManager": "pnpm@10.11.1"
+  "packageManager": "pnpm@10.12.1"
 }
