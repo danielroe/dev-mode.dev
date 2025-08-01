@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSound } from '@vueuse/sound'
 import { toast, Toaster } from 'vue-sonner'
+import 'vue-sonner/style.css'
 import flashlightSound from '~/assets/flashlight.mp3'
 
 const devMode = useLocalStorage('dev-mode', () => false)
