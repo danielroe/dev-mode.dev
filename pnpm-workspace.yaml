@@ -4,5 +4,4 @@ ignoredBuiltDependencies:
 onlyBuiltDependencies:
   - sharp
   - simple-git-hooks
-trustPolicy: no-downgrade
 
