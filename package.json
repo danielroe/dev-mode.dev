@@ -42,7 +42,7 @@
     "lint-staged": "16.1.0",
     "simple-git-hooks": "2.13.0",
     "typescript": "5.8.3",
-    "vitest": "4.0.14",
+    "vitest": "4.0.15",
     "vue-tsc": "3.0.1"
   },
   "simple-git-hooks": {
